@@ -7,7 +7,10 @@ class BaseCache:
     Base class which specifies the interface for accessing a cache. The
     cache could be implemented using any suitable caching technology.
 
-    Args:
+    Keyword Args:
+        host(str): the host name of the machine we communicate with the
+            cache store from.
+        port(int): the port number on the machine the cache store runs on.
         cache_id(str): a unique identifier which can be used to select 
             a DB in the underlying cache service. In redis, this should be
             the database which data will be stored on.
@@ -15,15 +18,15 @@ class BaseCache:
     def __init__(self, host='localhost', port=None, cache_id=None, *args, **kwargs):
         raise NotImplementedError("This is an abstract base class.")
 
-    def get_settings(self, client_id, endpoint):
+    def get_settings(self, client_id, endpoint_name):
         """
         Gets a settings dictionary of an endpoint for a certain client.
 
         Args:
             client_id(str): the unique id of the client the settings is 
                 meant to be gotten for.
-            enpoint(str): the endpoint name the settings is to be retrieved
-                for.
+            endpoint_name(str): the endpoint name the settings is to be 
+                retrieved for.
 
         Returns:
             dict: if the settings for the client and endpoint exists already
@@ -36,7 +39,7 @@ class BaseCache:
         """
         raise NotImplementedError(_method_not_implemented_msg)
 
-    def set_settings(self, client_id, endpoint, settings_dict, expire=None):
+    def set_settings(self, client_id, endpoint_name, settings_dict, expire=None):
         """
         Stores a dict in the underlying cache.This settings dict may be 
         serialized before being stored in the underlying cache system.
@@ -44,8 +47,8 @@ class BaseCache:
         Args:
             client_id(str): the unique id of the client the settings is
                 meant to be gotten for.
-            enpoint(str): the endpoint name the settings is to be retrieved
-                for.
+            endpoint_name(str): the endpoint name the settings is to be 
+                retrieved for.
             settings(dict): a dictionary containing the settings to be stored
                 in the cache.
 

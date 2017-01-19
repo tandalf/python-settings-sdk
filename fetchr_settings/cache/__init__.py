@@ -29,13 +29,13 @@ class BaseCache:
                 retrieved for.
 
         Returns:
-            dict: if the settings for the client and endpoint exists already
-            in the cache, it returns the settings a dict. Raises
-            NotFoundInCacheError if the settings requested is not found.
+            dict: a settings dict if the settings for the client and endpoint 
+            exists already in the cache. Raises NotFoundInCacheError if the 
+            settings requested is not found.
 
         Raises:
             NotFoundInCacheError: raised when the requested settings dict
-            is not found in the cache.
+                is not found in the cache.
         """
         raise NotImplementedError(_method_not_implemented_msg)
 

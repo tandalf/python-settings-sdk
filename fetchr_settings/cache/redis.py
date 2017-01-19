@@ -9,7 +9,9 @@ class RedisCache(BaseCache):
     An implementation of the BaseCache class which uses redis as the 
     underlying in-memory store.
     """
-
+    
+    #HINT: you might have to serialize dicts into strings to store them on
+    #redis and also deserialize when getting from cache during retrieval.
     def __init__(self, host='localhost', port=None, cache_id=None, *args, **kwargs):
         #please implement this method and remove this comment
         pass

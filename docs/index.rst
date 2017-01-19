@@ -5,6 +5,12 @@
 
 Welcome to Fetchr's Settings SDK documentation!
 ===============================================
+This client library is used for communicating with fetchr's settings api 
+(see `settings api documentation <https://api.fetchr.us/#settings-api>`_).
+
+Installation
+------------
+
 
 .. toctree::
    :maxdepth: 2
